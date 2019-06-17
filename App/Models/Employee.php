@@ -7,6 +7,9 @@ use Core\Model;
 
 class Employee extends Model
 {
+    /**
+     * Entities Of model
+     */
     public $id;
     public $first_name;
     public $last_name;

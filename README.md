@@ -1,6 +1,6 @@
 # ManhHaHY/demo-salary-system
 
-[![Build Status](https://img.shields.io/travis/ManhHaHY/demo-salary-system/master.svg?style=flat-square)](https://travis-ci.org/ManhHaHY/demo-salary-system)
+[![Build Status](https://travis-ci.org/ManhHaHY/demo-salary-system.svg?branch=master&style=flat-square)](https://travis-ci.org/ManhHaHY/demo-salary-system)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![Github All Releases](https://img.shields.io/github/downloads/ManhHaHY/demo-salary-system/total.svg)](https://github.com/ManhHaHY/demo-salary-system/releases)
 
@@ -13,12 +13,6 @@ For the starting point, just check out the git project
 
 ```sh
 git clone https://github.com/ManhHaHY/demo-salary-system.git
-```
-
-or using `composer`
-
-```sh
-composer create-project ManhHaHY/demo-salary-system your-project-name
 ```
 
 Then, get into the newly created folder and issue the command `composer install` to retrieve necessary packages for your development and testing environment.
