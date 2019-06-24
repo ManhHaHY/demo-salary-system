@@ -37,3 +37,37 @@ and
     }
  }
 ```
+
+## Install docker
+
+Run cmd in root folder of project and run command:
+
+```docker
+docker-compose up -d
+```
+
+After setup docker and start success you can open link:
+
+```
+http://localhost:81
+```
+
+You can change port of host in file:
+
+```
+docker-compose.yml at line port: "81:80" change 81 to any port you like
+```
+
+ ssh into docker with command:
+
+```docker
+docker-compose exec app bash
+```
+
+## Run test
+
+Run test with command:
+
+```
+php .\vendor\phpunit\phpunit\phpunit 
+```

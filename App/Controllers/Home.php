@@ -2,6 +2,7 @@
 namespace App\Controllers;
 
 use \Core\View;
+use App\Models\Employee;
 
 /**
  * Home controller
@@ -15,6 +16,13 @@ class Home extends \Core\Controller
      */
     public function indexAction()
     {
-        View::renderTemplate('Home/index.html');
+        $mEmployee = new Employee();
+        $listEmployees = $mEmployee->getAll();
+        /*echo '<pre>';
+        var_dump($listEmployees);
+        echo '<pre>';die;*/
+        View::renderTemplate('Home/index.html', [
+            'employees' => $listEmployees
+        ]);
     }
 }
