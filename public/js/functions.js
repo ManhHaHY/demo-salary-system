@@ -19,7 +19,11 @@ let addEmployee = function(){
         },
         cache: false,
         success: function (data) {
-            console.log(data);
+            if(data.code == 200){
+                window.location.href = '/';
+            }else{
+                alert('Invalid data submit please check again.');
+            }
         }
     });
 }

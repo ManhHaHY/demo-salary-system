@@ -47,7 +47,11 @@ class Employee extends Model
         }
         return $results;
     }
-    
+
+    /**
+     * @param int $id
+     * @return Employee
+     */
     public function findById(int $id)
     {
         $db = $this->getDB();

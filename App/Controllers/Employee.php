@@ -17,11 +17,23 @@ class Employee extends Controller
     public function addEmployee()
     {
         $data = $_POST;
+        header('Content-Type: application/json');
         if (count($data) > 0 && isset($data['first_name']) && isset($data['last_name'])
             && isset($data['salary'])) {
             $employee = new EmployeeModel($data);
             $employee->create();
-            echo json_encode($data);
+            http_response_code(200);
+            echo json_encode([
+                'code' => 200,
+                'message' => 'Insert new employee success.',
+                'data' => $data
+            ]);
+        } else {
+            http_response_code(422);
+            return json_encode([
+                'code' => 422,
+                'message' => 'Invalid data please check.'
+            ]);
         }
         die;
     }

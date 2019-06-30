@@ -4,8 +4,17 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![Github All Releases](https://img.shields.io/github/downloads/ManhHaHY/demo-salary-system/total.svg)](https://github.com/ManhHaHY/demo-salary-system/releases)
 
-This project `ManhHaHY/demo-salary-system` defines a simple calculate salary, PSR-4-compliant project skeleton for PHP development.
+This project `ManhHaHY/demo-salary-system` defines a simple calculate salary, PSR-4 and mvc project skeleton for PHP development.
 
+## Install Requirement
+
+PHP 7.x
+
+Nginx
+
+Mysql or Mariadb
+
+composer
 
 ## Installation
 
@@ -39,6 +48,8 @@ and
 ```
 
 ## Install docker
+
+install docker and docker-compose before run project.
 
 Run cmd in root folder of project and run command:
 

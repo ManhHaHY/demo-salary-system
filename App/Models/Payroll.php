@@ -10,6 +10,11 @@ class Payroll
     const CHILD_TAX = 2;
     const CAR_FEE = 500;
 
+    /**
+     * @param $employee
+     * @return float|int
+     * @throws \Exception
+     */
     public static function getPayroll($employee)
     {
         $salary = $employee->salary;
@@ -17,14 +22,14 @@ class Payroll
         $now = new DateTime();
         $age = $now->diff($birthday);
         $tax = new Tax(self::COUNTRY_TAX);
-        if($employee->kids > 2){
+        if ($employee->kids > 2) {
             $tax->subtract(self::CHILD_TAX);
         }
 
-        $salaryTax = $tax->calculateTax($salary);
+        $taxFee = $tax->calculateTax($salary);
         $oldBonus = Bonus::oldBonus($age->y, (float) $employee->salary);
-        $payroll = $salary - $salaryTax + $oldBonus;
-        if($employee->use_car == true){
+        $payroll = $salary - $taxFee + $oldBonus;
+        if ($employee->use_car == true) {
             $payroll -= self::CAR_FEE;
         }
 

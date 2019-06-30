@@ -7,7 +7,7 @@ use \PHPUnit\Framework\TestCase;
 
 class EmployeeTest extends TestCase
 {
-    public function testGetAll()
+    public function testEmployeeData()
     {
         $employee = new Employee([
             'first_name' => 'John',
