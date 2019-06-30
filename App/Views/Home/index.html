@@ -3,54 +3,43 @@
 {% block title %}Home{% endblock %}
 
 {% block body %}
-    <form>
-        <div class="form-row">
-          <div class="form-group col-md-6">
-            <label for="first_name">First Name</label>
-            <input type="text" class="form-control" id="first_name" placeholder="First Name" name="first_name">
-          </div>
-          <div class="form-group col-md-6">
-            <label for="last_name">Last Name</label>
-            <input type="text" class="form-control" id="last_name" placeholder="Last Name" name="last_name">
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group col-md-6">
-            <label for="email">Email</label>
-            <input type="email" class="form-control" id="email" placeholder="Email" name="email">
-          </div>
-          <div class="form-group col-md-6">
-            <label for="phone">Phone</label>
-            <input type="text" class="form-control" id="phone" placeholder="Phone" name="phone">
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="address">Address</label>
-          <input type="text" class="form-control" id="address" placeholder="1234 Main St" name="address">
-        </div>
-        <div class="form-row">
-          <div class="form-group col-md-6">
-            <label for="birthday">Birthday</label>
-            <input type="date" class="form-control" id="birthday" placeholder="Birthday" name="birthday">
-          </div>
-          <div class="form-group col-md-6">
-            <label for="dependent_person">Dependent person(s)</label>
-            <input type="number" class="form-control" id="dependent_person" placeholder="Dependent person" name="dependent_person">
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group col-md-6">
-            <label for="use_company_car">Use Company Car</label>
-            <select class="custom-select" id="use_company_car" name="use_company_car">
-              <option value="0">No</option>
-              <option value="1">Yes</option>
-            </select>
-          </div>
-          <div class="form-group col-md-6">
-            <label for="salary">Salary</label>
-            <input type="number" class="form-control" id="salary" placeholder="Salary">
-          </div>
-        </div>
-        <button type="submit" class="btn btn-primary">Get Payroll</button>
-    </form>
+<div class="container clearfix">
+    <h3 class="float-left">List Employees</h3>
+    <a href="/create" class="btn btn-primary float-right">
+        Add New Employee
+    </a>
+</div>
+
+<table class="table table-bordered">
+    {% if employees|length > 0 %}
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Age</th>
+        <th scope="col">Kid(s)</th>
+        <th scope="col">Use Car</th>
+        <th scope="col">Salary</th>
+        <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for employee in employees %}
+    <tr>
+        <th scope="row">{{ employee.id }}</th>
+        <td>{{ employee.first_name }}</td>
+        <td>{{ employee.last_name }}</td>
+        <td>{{ date('now').diff((date(employee.birthday))).format('%y') }}</td>
+        <td>{{ employee.kids ? employee.kids : 0 }}</td>
+        <td>{{ employee.use_car == 1 ? 'Yes' : 'No' }}</td>
+        <td>{{ employee.salary }}</td>
+        <td><a href="/detail?id={{employee.id}}">View Payroll</a></td>
+    </tr>
+    {% endfor %}
+    </tbody>
+    {% else %}
+    <tr><th>Not have data.</th></tr>
+    {% endif %}
+</table>
 {% endblock %}

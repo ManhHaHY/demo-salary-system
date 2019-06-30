@@ -2,14 +2,18 @@
 
 namespace App;
 
-class EmployeeTest extends \PHPUnit\Framework\TestCase
+use \App\Models\Employee;
+use \PHPUnit\Framework\TestCase;
+
+class EmployeeTest extends TestCase
 {
-    public function testGetAll()
+    public function testEmployeeData()
     {
-        $employee = new \App\Models\Employee();
-        $employee->setFirstName('John');
-        $this->assertEquals($employee->getFirstName(), 'John');
-        $employee->setLastName('Doe');
-        $this->assertEquals($employee->getLastName(), 'Doe');
+        $employee = new Employee([
+            'first_name' => 'John',
+            'last_name' => 'Doe',
+        ]);
+        $this->assertInstanceOf(Employee::class, $employee);
+        $this->assertEquals($employee->first_name, 'John');
     }
 }
