@@ -5,6 +5,7 @@ namespace App\Models;
 use PDO;
 use Core\Model;
 use Core\Fluent\Sql;
+use DateTime;
 
 class Employee extends Model
 {
@@ -17,18 +18,14 @@ class Employee extends Model
         'id',
         'first_name',
         'last_name',
-        'email',
-        'phone',
-        'address',
         'birthday',
-        'dependent_person',
-        'use_company_car',
+        'kids',
+        'use_car',
         'salary',
     ];
 
     const COUNTRY_TAX = 20;
     const DEPENDENT_PERSON_TAX = 2;
-    const OLD_TAX = 7;
     const CAR_TAX = 500;
 
     /**
@@ -41,7 +38,7 @@ class Employee extends Model
         $db = $this->getDB();
         $query = (new Sql())
             ->select(['*'])
-            ->from('employee', 'e');
+            ->from($this->table, 'e');
         $stmt = $db->query((string) $query);
         
         $results = [];
@@ -56,14 +53,9 @@ class Employee extends Model
         $db = $this->getDB();
         $query = (new Sql())
             ->select(['*'])
-            ->from('employee', 'e')
+            ->from($this->table, 'e')
             ->where('id = ' .  $id);
         $stmt = $db->query($query);
         return new self($stmt->fetch(PDO::FETCH_ASSOC));
-    }
-
-    public function calculatePayroll()
-    {
-        # code...
     }
 }

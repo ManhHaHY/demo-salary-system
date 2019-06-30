@@ -4,7 +4,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![Github All Releases](https://img.shields.io/github/downloads/ManhHaHY/demo-salary-system/total.svg)](https://github.com/ManhHaHY/demo-salary-system/releases)
 
-This project `ManhHaHY/demo-salary-system` defines a simple starting point, PSR-4-compliant project skeleton for PHP development.
+This project `ManhHaHY/demo-salary-system` defines a simple calculate salary, PSR-4-compliant project skeleton for PHP development.
 
 
 ## Installation
@@ -66,8 +66,8 @@ docker-compose exec app bash
 
 ## Run test
 
-Run test with command:
+exec to container app and run test with command:
 
 ```
-php .\vendor\phpunit\phpunit\phpunit 
+docker-compose exec app php vendor/phpunit/phpunit/phpunit
 ```

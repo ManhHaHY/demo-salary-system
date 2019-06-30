@@ -5,6 +5,8 @@ services:
     container_name: salary-mariadb
     ports:
         - '33062:3306'
+    volumes:
+        - ./docker/mysql-dump:/docker-entrypoint-initdb.d
     environment:
         MYSQL_ROOT_PASSWORD: root
         MYSQL_DATABASE: demo_salary
@@ -15,6 +17,7 @@ services:
     container_name: salary-php-nginx
     volumes:
         - ./:/var/www/html
+        - ./docker/nginx.conf:/etc/nginx/nginx.conf
     links:
         - 'mariadb:db'
     ports:

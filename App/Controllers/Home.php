@@ -18,9 +18,6 @@ class Home extends \Core\Controller
     {
         $mEmployee = new Employee();
         $listEmployees = $mEmployee->getAll();
-        /*echo '<pre>';
-        var_dump($listEmployees);
-        echo '<pre>';die;*/
         View::renderTemplate('Home/index.html', [
             'employees' => $listEmployees
         ]);
