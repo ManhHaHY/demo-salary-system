@@ -3,7 +3,43 @@
 {% block title %}Home{% endblock %}
 
 {% block body %}
+<div class="container clearfix">
+    <h3 class="float-left">List Employees</h3>
+    <a href="/create" class="btn btn-primary float-right">
+        Add New Employee
+    </a>
+</div>
 
-    <h1>Welcome</h1>
-
+<table class="table table-bordered">
+    {% if employees|length > 0 %}
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Age</th>
+        <th scope="col">Kid(s)</th>
+        <th scope="col">Use Car</th>
+        <th scope="col">Salary</th>
+        <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for employee in employees %}
+    <tr>
+        <th scope="row">{{ employee.id }}</th>
+        <td>{{ employee.first_name }}</td>
+        <td>{{ employee.last_name }}</td>
+        <td>{{ date('now').diff((date(employee.birthday))).format('%y') }}</td>
+        <td>{{ employee.kids ? employee.kids : 0 }}</td>
+        <td>{{ employee.use_car == 1 ? 'Yes' : 'No' }}</td>
+        <td>{{ employee.salary }}</td>
+        <td><a href="/detail?id={{employee.id}}">View Payroll</a></td>
+    </tr>
+    {% endfor %}
+    </tbody>
+    {% else %}
+    <tr><th>Not have data.</th></tr>
+    {% endif %}
+</table>
 {% endblock %}

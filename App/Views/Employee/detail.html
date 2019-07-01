@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+{% if employee %}
+<table class="table table-bordered">
+    <tr>
+        <td>Full Name</td>
+        <td>{{ employee.first_name }} {{ employee.last_name }}</td>
+    </tr>
+    <tr>
+        <td>Birthday</td>
+        <td>{{ employee.birthday|date('m/d/Y') }}</td>
+    </tr>
+    <tr>
+        <td>Age</td>
+        <td>{{ date('now').diff((date(employee.birthday))).format('%y') }}</td>
+    </tr>
+    <tr>
+        <td>Kid(s)</td>
+        <td>{{ employee.kids }}</td>
+    </tr>
+    <tr>
+        <td>Use company car</td>
+        <td>{{ employee.use_car ? 'Yes' : 'No' }}</td>
+    </tr>
+    <tr>
+        <td>Salary</td>
+        <td>{{ employee.salary }}</td>
+    </tr>
+    <tr>
+        <td>Payroll</td>
+        <td>{{ payroll }}</td>
+    </tr>
+</table>
+<a href="/" class="btn btn-block btn-info">Back To Home</a>
+{% endif %}
+{% endblock %}
